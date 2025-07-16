@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { FiUser, FiMail, FiPhone, FiLock, FiMapPin } from 'react-icons/fi';
 import { useAuth } from '../context/AuthContext';
-import Layout from '../components/layout/Layout';
+import Layout from '../components/Layout/Layout';
 import OTPVerification from '../components/auth/OTPVerification';
 
 const Register = () => {
