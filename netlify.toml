@@ -1,12 +1,13 @@
 [build]
+  publish = "out"
   command = "npm run build && npx next export"
-  publish = ".next"
+  environment = { NEXT_PUBLIC_API_URL = "https://evento-backend-77q2.onrender.com", NODE_VERSION = "16", NEXT_PRIVATE_TARGET = "server" }
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
   
 [build.environment]
-  NODE_VERSION = "16"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
   
 [[redirects]]
   from = "/*"
