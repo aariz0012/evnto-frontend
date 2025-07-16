@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "echo /*    /index.html   200 > public/_redirects",
-    "build": "next build && next export",
-    "postbuild": "copy public\\_redirects out\\_redirects",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -65,3 +63,4 @@
     ]
   }
 }
+
