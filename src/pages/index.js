@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FiSearch, FiMapPin, FiUsers, FiCalendar, FiArrowRight } from 'react-icons/fi';
-import Layout from '../components/layout/Layout';
+import Layout from '../components/Layout/Layout';
 
 export default function Home() {
   const [searchParams, setSearchParams] = useState({
