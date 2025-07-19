@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 // Placeholder SVG logo component
 const EventOLogo = () => (
@@ -59,6 +60,11 @@ const aboutSections = [
   }
 ];
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+};
+
 const About = () => (
   <div className="min-h-screen">
     {/* Hero Section */}
@@ -74,7 +80,14 @@ const About = () => (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4 space-y-12">
         {aboutSections.map((section, idx) => (
-          <div key={section.title} className="flex flex-col md:flex-row items-center md:space-x-8 bg-white rounded-lg shadow-md p-6">
+          <motion.div
+            key={section.title}
+            className="flex flex-col md:flex-row items-center md:space-x-8 bg-white rounded-lg shadow-md p-6"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {/* Image placeholder - replace null with actual image path or import */}
             {section.image ? (
               <img src={section.image} alt={section.imageAlt} className="w-40 h-40 object-cover rounded-full mb-4 md:mb-0" />
@@ -89,7 +102,7 @@ const About = () => (
                 {typeof section.content === 'string' ? <p>{section.content}</p> : section.content}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
