@@ -1,5 +1,15 @@
 import React from "react";
 
+// Placeholder SVG logo component
+const EventOLogo = () => (
+  <div className="flex justify-center mb-6">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="EventO Logo">
+      <circle cx="40" cy="40" r="38" stroke="#6366F1" strokeWidth="4" fill="#EEF2FF" />
+      <text x="50%" y="54%" textAnchor="middle" fill="#6366F1" fontSize="32" fontWeight="bold" dy=".3em" fontFamily="Arial, sans-serif">E</text>
+    </svg>
+  </div>
+);
+
 const aboutSections = [
   {
     title: "Welcoming Introduction",
@@ -51,6 +61,7 @@ const aboutSections = [
 
 const About = () => (
   <main className="max-w-4xl mx-auto px-4 py-12">
+    <EventOLogo />
     <header className="mb-10 text-center">
       <h1 className="text-5xl font-extrabold mb-4 text-indigo-700">About EventO</h1>
       <p className="text-lg text-gray-600">Discover what makes us the best choice for your next event.</p>
