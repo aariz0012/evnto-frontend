@@ -60,33 +60,54 @@ const aboutSections = [
 ];
 
 const About = () => (
-  <main className="max-w-4xl mx-auto px-4 py-12">
-    <EventOLogo />
-    <header className="mb-10 text-center">
-      <h1 className="text-5xl font-extrabold mb-4 text-indigo-700">About EventO</h1>
-      <p className="text-lg text-gray-600">Discover what makes us the best choice for your next event.</p>
-    </header>
-    <div className="space-y-12">
-      {aboutSections.map((section, idx) => (
-        <section key={section.title} className="flex flex-col md:flex-row items-center md:space-x-8 bg-white rounded-lg shadow-md p-6">
-          {/* Image placeholder - replace null with actual image path or import */}
-          {section.image ? (
-            <img src={section.image} alt={section.imageAlt} className="w-40 h-40 object-cover rounded-full mb-4 md:mb-0" />
-          ) : (
-            <div className="w-40 h-40 flex items-center justify-center bg-gray-100 rounded-full text-gray-400 mb-4 md:mb-0 text-center text-sm">
-              Add image here
-            </div>
-          )}
-          <div className="flex-1">
-            <h2 className="text-2xl font-bold mb-2 text-indigo-600">{section.title}</h2>
-            <div className="text-gray-700 text-base">
-              {typeof section.content === 'string' ? <p>{section.content}</p> : section.content}
+  <div className="min-h-screen">
+    {/* Hero Section */}
+    <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
+      <div className="container mx-auto px-4 text-center">
+        <EventOLogo />
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">About EventO</h1>
+        <p className="text-xl mb-8">Discover what makes us the best choice for your next event.</p>
+      </div>
+    </section>
+
+    {/* About Sections */}
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4 space-y-12">
+        {aboutSections.map((section, idx) => (
+          <div key={section.title} className="flex flex-col md:flex-row items-center md:space-x-8 bg-white rounded-lg shadow-md p-6">
+            {/* Image placeholder - replace null with actual image path or import */}
+            {section.image ? (
+              <img src={section.image} alt={section.imageAlt} className="w-40 h-40 object-cover rounded-full mb-4 md:mb-0" />
+            ) : (
+              <div className="w-40 h-40 flex items-center justify-center bg-gray-100 rounded-full text-gray-400 mb-4 md:mb-0 text-center text-sm">
+                Add image here
+              </div>
+            )}
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold mb-2 text-indigo-600">{section.title}</h2>
+              <div className="text-gray-700 text-base">
+                {typeof section.content === 'string' ? <p>{section.content}</p> : section.content}
+              </div>
             </div>
           </div>
-        </section>
-      ))}
-    </div>
-  </main>
+        ))}
+      </div>
+    </section>
+
+    {/* CTA Section */}
+    <section className="py-16 bg-gradient-to-r from-indigo-600 to-purple-700 text-white">
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-3xl font-bold mb-6">Ready to Host Your Next Event?</h2>
+        <p className="text-xl mb-8 max-w-2xl mx-auto">Join thousands of satisfied customers who have found their perfect venue through EventO.</p>
+        <a 
+          href="/register" 
+          className="inline-block bg-white text-indigo-700 hover:bg-gray-100 py-3 px-8 rounded-md font-semibold transition duration-300 ease-in-out"
+        >
+          Sign Up Now
+        </a>
+      </div>
+    </section>
+  </div>
 );
 
 export default About; 
