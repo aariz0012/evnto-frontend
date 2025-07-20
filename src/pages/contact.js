@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaDirections } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -38,25 +38,36 @@ const Contact = () => {
     {
       icon: <FaPhone className="text-2xl" />,
       title: "Phone",
-      details: ["+16892655819", "+918875195390"],
+      details: [
+        { text: "+16892655819", link: "tel:+16892655819" },
+        { text: "+918875195390", link: "tel:+918875195390" }
+      ],
       color: "bg-blue-500"
     },
     {
       icon: <FaEnvelope className="text-2xl" />,
       title: "Email",
-      details: ["support@evento.com", "khanaariz0012@gmail.com"],
+      details: [
+        { text: "support@evento.com", link: "mailto:support@evento.com" },
+        { text: "khanaariz0012@gmail.com", link: "mailto:khanaariz0012@gmail.com" }
+      ],
       color: "bg-green-500"
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
       title: "Office",
-      details: ["Tower 2, 23rd floor-2328, Bhutani Alphathum, Sector90, Noida, Uttar Pradesh, India"],
+      details: [
+        { text: "Tower 2, 23rd floor-2328, Bhutani Alphathum, Sector90, Noida, Uttar Pradesh, India", link: "https://maps.google.com/?q=Tower+2,+23rd+floor-2328,+Bhutani+Alphathum,+Sector90,+Noida,+Uttar+Pradesh,+India" }
+      ],
       color: "bg-purple-500"
     },
     {
       icon: <FaClock className="text-2xl" />,
       title: "Business Hours",
-      details: ["Mon-Fri: 9AM-6PM", "Sat-Sun: 10AM-4PM"],
+      details: [
+        { text: "Mon-Fri: 9AM-6PM", link: null },
+        { text: "Sat-Sun: 10AM-4PM", link: null }
+      ],
       color: "bg-orange-500"
     }
   ];
@@ -86,6 +97,9 @@ const Contact = () => {
     { icon: <FaInstagram />, href: "#", label: "Instagram" },
     { icon: <FaLinkedin />, href: "#", label: "LinkedIn" }
   ];
+
+  const officeAddress = "Tower 2, 23rd floor-2328, Bhutani Alphathum, Sector90, Noida, Uttar Pradesh, India";
+  const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(officeAddress)}`;
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -147,7 +161,19 @@ const Contact = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">{info.title}</h3>
                 {info.details.map((detail, idx) => (
-                  <p key={idx} className="text-gray-600 mb-1">{detail}</p>
+                  detail.link ? (
+                    <a
+                      key={idx}
+                      href={detail.link}
+                      className="block text-blue-600 hover:text-blue-800 mb-1 transition-colors duration-200 hover:underline"
+                      target={detail.link.startsWith('http') ? "_blank" : "_self"}
+                      rel={detail.link.startsWith('http') ? "noopener noreferrer" : ""}
+                    >
+                      {detail.text}
+                    </a>
+                  ) : (
+                    <p key={idx} className="text-gray-600 mb-1">{detail.text}</p>
+                  )
                 ))}
               </motion.div>
             ))}
@@ -261,16 +287,37 @@ const Contact = () => {
             >
               <h2 className="text-3xl font-bold mb-6 text-gray-800">Visit Our Office</h2>
               
-              {/* Map Placeholder */}
-              <div className="bg-gray-200 rounded-lg h-64 mb-6 flex items-center justify-center">
-                <div className="text-center text-gray-500">
+              {/* Interactive Map */}
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-gray-200 rounded-lg h-64 mb-6 flex items-center justify-center hover:bg-gray-300 transition-colors duration-300 cursor-pointer group"
+              >
+                <div className="text-center text-gray-500 group-hover:text-gray-700">
                   <FaMapMarkerAlt className="text-4xl mx-auto mb-2" />
-                  <p>Interactive Map</p>
-                  <p className="text-sm">Tower 2, 23rd floor-2328, Bhutani Alphathum, Sector90, Noida, Uttar Pradesh, India</p>
+                  <p className="font-semibold">Click to Open Google Maps</p>
+                  <p className="text-sm mt-2">Get directions to our office</p>
+                  <div className="flex items-center justify-center mt-2 text-blue-600">
+                    <FaDirections className="mr-1" />
+                    <span className="text-sm">View Directions</span>
+                  </div>
                 </div>
-              </div>
+              </a>
               
               <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold text-gray-800 mb-2">Office Address</h3>
+                  <a
+                    href={googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline block"
+                  >
+                    {officeAddress}
+                  </a>
+                </div>
+                
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2">Office Hours</h3>
                   <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
