@@ -38,19 +38,19 @@ const Contact = () => {
     {
       icon: <FaPhone className="text-2xl" />,
       title: "Phone",
-      details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+      details: ["+16892655819", "+918875195390"],
       color: "bg-blue-500"
     },
     {
       icon: <FaEnvelope className="text-2xl" />,
       title: "Email",
-      details: ["support@evento.com", "info@evento.com"],
+      details: ["support@evento.com", "khanaariz0012@gmail.com"],
       color: "bg-green-500"
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
       title: "Office",
-      details: ["123 Event Street", "New York, NY 10001"],
+      details: ["Tower 2, 23rd floor-2328, Bhutani Alphathum, Sector90, Noida, Uttar Pradesh, India"],
       color: "bg-purple-500"
     },
     {
@@ -266,7 +266,7 @@ const Contact = () => {
                 <div className="text-center text-gray-500">
                   <FaMapMarkerAlt className="text-4xl mx-auto mb-2" />
                   <p>Interactive Map</p>
-                  <p className="text-sm">123 Event Street, New York, NY 10001</p>
+                  <p className="text-sm">Tower 2, 23rd floor-2328, Bhutani Alphathum, Sector90, Noida, Uttar Pradesh, India</p>
                 </div>
               </div>
               
