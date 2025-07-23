@@ -90,12 +90,12 @@ export default function Home() {
 
   // Event types
   const eventTypes = [
-    { name: 'Wedding', icon: '💍', color: 'bg-pink-100 text-pink-800' },
-    { name: 'Birthday', icon: '🎂', color: 'bg-blue-100 text-blue-800' },
-    { name: 'Corporate', icon: '💼', color: 'bg-gray-100 text-gray-800' },
-    { name: 'Engagement', icon: '💎', color: 'bg-purple-100 text-purple-800' },
-    { name: 'Anniversary', icon: '🎁', color: 'bg-red-100 text-red-800' },
-    { name: 'Reception', icon: '🥂', color: 'bg-yellow-100 text-yellow-800' }
+    { name: 'Wedding', image: '/images/events/wedding.jpg' },
+    { name: 'Birthday', image: '/images/events/birthday.jpg' },
+    { name: 'Corporate', image: '/images/events/corporate.jpg' },
+    { name: 'Engagement', image: '/images/events/engagement.jpg' },
+    { name: 'Anniversary', image: '/images/events/anniversary.jpg' },
+    { name: 'Reception', image: '/images/events/reception.jpg' }
   ];
 
   // Testimonials
@@ -259,20 +259,23 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {eventTypes.map((event, index) => (
               <Link href={`/venues?eventType=${event.name}`} key={event.name}>
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col items-center justify-center cursor-pointer"
+                  className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
-                  <div className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl mb-5 transition-all duration-300 ${event.color} group-hover:bg-opacity-80`}>
-                    {event.icon}
+                  <div className="relative h-40 w-full">
+                    <img src={event.image} alt={event.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                   </div>
-                  <h3 className="font-bold text-lg text-gray-800 group-hover:text-primary-600 transition-colors duration-300">{event.name}</h3>
+                  <div className="p-4 text-center">
+                    <h3 className="font-semibold text-lg text-gray-800 group-hover:text-primary-600 transition-colors duration-300">{event.name}</h3>
+                  </div>
                 </motion.div>
               </Link>
             ))}
