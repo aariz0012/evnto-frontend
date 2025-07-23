@@ -171,7 +171,7 @@ export default function Home() {
                         value={searchParams.location}
                         onChange={handleChange}
                         placeholder="City, State"
-                        className="form-input pl-10"
+                        className="form-input pl-10 text-gray-900"
                       />
                     </div>
                   </div>
@@ -192,7 +192,7 @@ export default function Home() {
                         onChange={handleChange}
                         placeholder="No. of guests"
                         min="1"
-                        className="form-input pl-10"
+                        className="form-input pl-10 text-gray-900"
                       />
                     </div>
                   </div>
@@ -206,7 +206,7 @@ export default function Home() {
                       name="eventType"
                       value={searchParams.eventType}
                       onChange={handleChange}
-                      className="form-input"
+                      className="form-input text-gray-900"
                     >
                       <option value="">Select event type</option>
                       <option value="wedding">Wedding</option>
@@ -232,7 +232,7 @@ export default function Home() {
                         name="date"
                         value={searchParams.date}
                         onChange={handleChange}
-                        className="form-input pl-10"
+                        className="form-input pl-10 text-gray-900"
                       />
                     </div>
                   </div>
