@@ -10,22 +10,34 @@ const IntroPopup = ({ onClose }) => {
     {
       title: "Welcome to EventO",
       content: "Your one-stop platform for booking venues and event services for all your special occasions.",
-      image: "/images/intro-1.jpg" // This will be a placeholder until actual images are added
+      image: "/images/welcome-hero.jpg"
     },
     {
-      title: "Find the Perfect Venue",
-      content: "Browse through our extensive collection of lawns, banquets, cafes, and more for your next event.",
-      image: "/images/intro-2.jpg"
+      title: "Customer Experience",
+      content: "Easily find and book your dream venue with our user-friendly interface and trusted service providers.",
+      image: "/images/customer-experience.jpg",
+      subtitle: "For Customers"
     },
     {
-      title: "Book Professional Services",
-      content: "Connect with top-rated caterers, decorators, and event organizers to make your event memorable.",
-      image: "/images/intro-3.jpg"
+      title: "Vendor Opportunities",
+      content: "Grow your business by reaching thousands of potential clients through our platform.",
+      image: "/images/vendor-opportunities.jpg",
+      subtitle: "For Vendors"
     },
     {
-      title: "Start Your Journey Today",
-      content: "Create an account to start booking or become a host to list your venue or services.",
-      image: "/images/intro-4.jpg"
+      title: "Beautiful Venues",
+      content: "Discover stunning venues for weddings, corporate events, parties, and more.",
+      image: "/images/venue-showcase.jpg"
+    },
+    {
+      title: "Professional Services",
+      content: "Connect with top-rated caterers, decorators, photographers, and event planners.",
+      image: "/images/services-showcase.jpg"
+    },
+    {
+      title: "Join Our Community",
+      content: "Create an account to start booking venues or list your services today!",
+      image: "/images/join-community.jpg"
     }
   ];
 
@@ -77,10 +89,11 @@ const IntroPopup = ({ onClose }) => {
                   transition={{ duration: 0.5 }}
                   className="absolute inset-0 bg-gradient-to-br from-primary-600 to-secondary-600 flex items-center justify-center"
                 >
-                  <div className="text-white text-center p-8">
-                    <div className="text-4xl font-bold mb-4">EventO</div>
-                    <div className="text-xl">Making celebrations memorable</div>
-                  </div>
+                  <motion.img
+                  src={slides[currentSlide].image}
+                  alt={slides[currentSlide].title}
+                  className="w-full h-full object-cover"
+                />
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -98,6 +111,9 @@ const IntroPopup = ({ onClose }) => {
                 >
                   <h2 className="text-2xl font-bold text-gray-800 mb-4">{slides[currentSlide].title}</h2>
                   <p className="text-gray-600 mb-6">{slides[currentSlide].content}</p>
+                  {slides[currentSlide].subtitle && (
+                    <div className="text-sm text-gray-500 mt-2">{slides[currentSlide].subtitle}</div>
+                  )}
                 </motion.div>
               </AnimatePresence>
 
@@ -166,3 +182,4 @@ const IntroPopup = ({ onClose }) => {
 };
 
 export default IntroPopup;
+
