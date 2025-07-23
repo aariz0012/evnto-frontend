@@ -5,9 +5,7 @@ const nextConfig = {
     domains: ['localhost', 'enjoy-booking-api.onrender.com'],
     unoptimized: true,
   },
-  output: 'export',
-  trailingSlash: true,
-  distDir: 'out',
+
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;
