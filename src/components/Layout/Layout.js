@@ -27,14 +27,37 @@ const Layout = ({ children, title = 'EventO - Book Venues & Services' }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 to-white">
         <Navbar />
         
         <main className="flex-grow">
-          {children}
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-transparent opacity-50 pointer-events-none" />
+            {children}
+          </div>
         </main>
         
         <Footer />
+        
+        {/* Floating Action Button for Quick Actions */}
+        <div className="fixed bottom-4 right-4 z-50">
+          <div className="flex flex-col space-y-2">
+            <button 
+              className="bg-primary-500 text-white px-4 py-2 rounded-full hover:bg-primary-600 transition-colors flex items-center justify-center"
+              onClick={() => window.location.href = '/explore'}
+            >
+              <span className="text-xl">🔍</span>
+              <span className="ml-2">Explore Venues</span>
+            </button>
+            <button 
+              className="bg-secondary-500 text-white px-4 py-2 rounded-full hover:bg-secondary-600 transition-colors flex items-center justify-center"
+              onClick={() => window.location.href = '/services'}
+            >
+              <span className="text-xl">✨</span>
+              <span className="ml-2">Find Services</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       {showIntroPopup && (
