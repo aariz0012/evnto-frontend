@@ -94,7 +94,7 @@ export default function Home() {
     { name: 'Birthday', icon: '🎂', color: 'bg-blue-100 text-blue-800' },
     { name: 'Corporate', icon: '💼', color: 'bg-gray-100 text-gray-800' },
     { name: 'Engagement', icon: '💎', color: 'bg-purple-100 text-purple-800' },
-    { name: 'Gala', icon: '🎭', color: 'bg-indigo-100 text-indigo-800' },
+    { name: 'Anniversary', icon: '🎁', color: 'bg-red-100 text-red-800' },
     { name: 'Reception', icon: '🥂', color: 'bg-yellow-100 text-yellow-800' }
   ];
 
@@ -213,7 +213,7 @@ export default function Home() {
                       <option value="birthday">Birthday</option>
                       <option value="corporate">Corporate</option>
                       <option value="engagement">Engagement</option>
-                      <option value="gala">Gala</option>
+                      <option value="anniversary">Anniversary</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
@@ -250,31 +250,31 @@ export default function Home() {
       </section>
 
       {/* Event Types Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Plan Your Perfect Event</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              From weddings to corporate events, we have venues and services for every occasion
+            <h2 className="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">Plan Your Perfect Event</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From weddings to corporate events, we have venues and services for every occasion.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {eventTypes.map((eventType, index) => (
-              <motion.div
-                key={eventType.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card hover:shadow-lg cursor-pointer text-center"
-              >
-                <Link href={`/venues?eventType=${eventType.name.toLowerCase()}`}>
-                  <div className={`text-4xl mb-3 mx-auto w-16 h-16 rounded-full flex items-center justify-center ${eventType.color}`}>
-                    {eventType.icon}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            {eventTypes.map((event, index) => (
+              <Link href={`/venues?eventType=${event.name}`} key={event.name}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col items-center justify-center cursor-pointer"
+                >
+                  <div className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl mb-5 transition-all duration-300 ${event.color} group-hover:bg-opacity-80`}>
+                    {event.icon}
                   </div>
-                  <h3 className="text-lg font-semibold">{eventType.name}</h3>
-                </Link>
-              </motion.div>
+                  <h3 className="font-bold text-lg text-gray-800 group-hover:text-primary-600 transition-colors duration-300">{event.name}</h3>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
