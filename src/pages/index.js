@@ -3,12 +3,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FiSearch, FiMapPin, FiUsers, FiCalendar, FiArrowRight } from 'react-icons/fi';
 import Layout from '../components/Layout/Layout';
-import weddingImage from '/images/events/wedding.jpg';
-import birthdayImage from '/images/events/birthday.jpg';
-import corporateImage from '/images/events/corporate.jpg';
-import engagementImage from '/images/events/engagement.jpg';
-import anniversaryImage from '/images/events/anniversary.jpg';
-import receptionImage from '/images/events/reception.jpg';
+
 
 export default function Home() {
   const [searchParams, setSearchParams] = useState({
@@ -96,12 +91,12 @@ export default function Home() {
 
   // Event types
   const eventTypes = [
-    { name: 'Wedding', image: weddingImage },
-    { name: 'Birthday', image: birthdayImage },
-    { name: 'Corporate', image: corporateImage },
-    { name: 'Engagement', image: engagementImage },
-    { name: 'Anniversary', image: anniversaryImage },
-    { name: 'Reception', image: receptionImage }
+    { name: 'Wedding', image: '/images/events/wedding.jpg' },
+    { name: 'Birthday', image: '/images/events/birthday.jpg' },
+    { name: 'Corporate', image: '/images/events/corporate.jpg' },
+    { name: 'Engagement', image: '/images/events/engagement.jpg' },
+    { name: 'Anniversary', image: '/images/events/anniversary.jpg' },
+    { name: 'Reception', image: '/images/events/reception.jpg' }
   ];
 
   // Testimonials
