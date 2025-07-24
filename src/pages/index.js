@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FiSearch, FiMapPin, FiUsers, FiCalendar, FiArrowRight } from 'react-icons/fi';
 import Layout from '../components/Layout/Layout';
-import weddingImage from '../../public/images/events/wedding.jpg';
-import birthdayImage from '../../public/images/events/birthday.jpg';
-import corporateImage from '../../public/images/events/corporate.jpg';
-import engagementImage from '../../public/images/events/engagement.jpg';
-import anniversaryImage from '../../public/images/events/anniversary.jpg';
-import receptionImage from '../../public/images/events/reception.jpg';
+import weddingImage from '/images/events/wedding.jpg';
+import birthdayImage from '/images/events/birthday.jpg';
+import corporateImage from '/images/events/corporate.jpg';
+import engagementImage from '/images/events/engagement.jpg';
+import anniversaryImage from '/images/events/anniversary.jpg';
+import receptionImage from '/images/events/reception.jpg';
 
 export default function Home() {
   const [searchParams, setSearchParams] = useState({
