@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
 import { format } from 'date-fns';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { FaMapMarkerAlt, FaStar, FaRegCalendarAlt, FaSearch } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
@@ -96,13 +98,18 @@ const VenuesPage = () => {
                   <div className="flex-1">
                     <div className="relative">
                       <FaRegCalendarAlt className="absolute left-3 top-3 text-gray-400" />
-                      <input
-                        type="text"
-                        placeholder="Select dates"
+                      <DatePicker
+                        selectsRange
+                        startDate={dateRange.startDate}
+                        endDate={dateRange.endDate}
+                        onChange={(update) => {
+                          const [start, end] = update;
+                          setDateRange({ startDate: start, endDate: end });
+                        }}
+                        isClearable
+                        placeholderText="Select your dates"
                         className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
-                        value={`${format(dateRange.startDate, 'MMM dd')} - ${format(dateRange.endDate, 'MMM dd')}`}
-                        readOnly
-                        // In a real app, you would use a date picker component here
+                        dateFormat="MMM dd"
                       />
                     </div>
                   </div>
