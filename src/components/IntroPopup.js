@@ -8,9 +8,9 @@ const IntroPopup = ({ onClose }) => {
   
   const slides = [
     {
-      title: "Welcome to EventO",
-      content: "Your one-stop platform for booking venues and event services for all your special occasions.",
-      image: "/images/welcome-hero.jpg"
+      title: "Welcome to Venuity",
+      content: "Your one-stop solution for booking venues and event services for all your special occasions.",
+      image: "/images/welcome-hero-new.jpg"
     },
     {
       title: "Customer Experience",
@@ -109,7 +109,7 @@ const IntroPopup = ({ onClose }) => {
                   transition={{ duration: 0.5 }}
                   className="flex-grow"
                 >
-                  <h2 className="text-2xl font-bold text-gray-800 mb-4">{slides[currentSlide].title}</h2>
+                  <h2 className="text-3xl font-bold text-gray-800 mb-4">Welcome to Venuity!</h2>
                   <p className="text-gray-600 mb-6">{slides[currentSlide].content}</p>
                   {slides[currentSlide].subtitle && (
                     <div className="text-sm text-gray-500 mt-2">{slides[currentSlide].subtitle}</div>
@@ -124,7 +124,7 @@ const IntroPopup = ({ onClose }) => {
                   animate={{ opacity: 1 }}
                   className="bg-gray-100 p-4 rounded-lg mb-6"
                 >
-                  <p className="text-gray-700 italic">"EventO made planning our wedding so much easier! We found the perfect venue and amazing vendors all in one place."</p>
+                                    <p className="text-gray-700 italic">"Venuity made planning our wedding so much easier! We found the perfect venue and amazing vendors all in one place."</p>
                   <p className="text-gray-500 text-sm mt-2">- Sarah & John, Newlyweds</p>
                 </motion.div>
               )}
@@ -182,4 +182,3 @@ const IntroPopup = ({ onClose }) => {
 };
 
 export default IntroPopup;
-
