@@ -67,7 +67,7 @@ const Navbar = () => {
                 Services
               </Link>
               <div 
-                className="relative"
+                className="relative flex items-center"
                 onMouseEnter={() => setIsAboutMenuOpen(true)}
                 onMouseLeave={() => setIsAboutMenuOpen(false)}
               >
