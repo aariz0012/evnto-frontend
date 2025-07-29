@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import IntroPopup from '../IntroPopup';
 
-const Layout = ({ children, title = 'EventO - Book Venues & Services' }) => {
+const Layout = ({ children, title = 'Venuity - Book Venues & Services' }) => {
   const [showIntroPopup, setShowIntroPopup] = useState(false);
 
   useEffect(() => {
