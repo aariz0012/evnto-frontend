@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Logo from '@/components/common/Logo';
+import Logo from './common/Logo';
 
 const Navbar = () => (
   <nav className="flex items-center justify-between px-6 py-4 bg-white shadow">
