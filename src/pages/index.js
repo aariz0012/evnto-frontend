@@ -106,7 +106,7 @@ export default function Home() {
       name: 'Priya & Rahul',
       event: 'Wedding',
       image: '/images/testimonial1.jpg',
-      quote: 'EventO made our wedding planning so much easier! We found the perfect venue and amazing vendors all in one place.'
+            quote: 'Venuity made our wedding planning so much easier! We found the perfect venue and amazing vendors all in one place.'
     },
     {
       id: 2,
@@ -120,12 +120,12 @@ export default function Home() {
       name: 'Neha Gupta',
       event: 'Birthday Party',
       image: '/images/testimonial3.jpg',
-      quote: 'I organized a surprise birthday party for my husband and everything was perfect. The venue and caterer I booked through EventO exceeded my expectations!'
+            quote: 'I organized a surprise birthday party for my husband and everything was perfect. The venue and caterer I booked through Venuity exceeded my expectations!'
     }
   ];
 
   return (
-    <Layout title="EventO - Book Venues & Event Services">
+        <Layout title="Venuity - Book Venues & Event Services">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
         <div className="absolute inset-0 bg-black opacity-30"></div>
@@ -390,7 +390,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Booking your perfect venue and services is easy with EventO
+                            Booking your perfect venue and services is easy with Venuity
             </p>
           </div>
           
@@ -449,7 +449,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Hear from people who have successfully planned their events with EventO
+                            Hear from people who have successfully planned their events with Venuity
             </p>
           </div>
           
@@ -482,7 +482,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Plan Your Next Event?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Join EventO today and discover the perfect venue and services for your special occasion
+                        Join Venuity today and discover the perfect venue and services for your special occasion
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link href="/register" className="btn-primary bg-white text-primary-600 hover:bg-gray-100">
