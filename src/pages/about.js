@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { FiSearch, FiShield, FiMessageCircle, FiStar, FiClipboard, FiHeadphones } from 'react-icons/fi';
 
 // Placeholder SVG logo component
-const EventOLogo = () => (
+const VenuityLogo = () => (
   <div className="flex justify-center mb-6">
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="EventO Logo">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Venuity Logo">
       <circle cx="40" cy="40" r="38" stroke="#6366F1" strokeWidth="4" fill="#EEF2FF" />
       <text x="50%" y="54%" textAnchor="middle" fill="#6366F1" fontSize="32" fontWeight="bold" dy=".3em" fontFamily="Arial, sans-serif">E</text>
     </svg>
@@ -15,18 +15,18 @@ const EventOLogo = () => (
 const aboutSections = [
   {
     title: "Welcoming Introduction",
-    content: `Welcome to EventO – your all-in-one platform for discovering, booking, and managing venues for any occasion. Whether you’re planning a wedding, corporate event, birthday party, or any special gathering, EventO makes it easy to find the perfect venue, compare options, and secure your reservation—all in just a few clicks.`,
+        content: `Welcome to Venuity – your all-in-one platform for discovering, booking, and managing venues for any occasion. Whether you’re planning a wedding, corporate event, birthday party, or any special gathering, Venuity makes it easy to find the perfect venue, compare options, and secure your reservation—all in just a few clicks.`,
     imageAlt: "People celebrating at an event",
     image: null // Add image path or import here
   },
   {
     title: "Mission Statement",
-    content: `At EventO, our mission is to make event planning effortless and enjoyable for everyone. We are dedicated to connecting people with the perfect venues by providing a transparent, secure, and user-friendly platform. We value trust, convenience, and exceptional service, striving to empower our users to create memorable experiences with ease and confidence.`,
+        content: `At Venuity, our mission is to make event planning effortless and enjoyable for everyone. We are dedicated to connecting people with the perfect venues by providing a transparent, secure, and user-friendly platform. We value trust, convenience, and exceptional service, striving to empower our users to create memorable experiences with ease and confidence.`,
     imageAlt: "Team collaborating on event planning",
     image: null // Add image path or import here
   },
   {
-    title: "Why Choose EventO?",
+        title: "Why Choose Venuity?",
     content: (
       <ul className="list-disc list-inside space-y-1">
         <li><b>Extensive Venue Selection:</b> Find a wide variety of venues to suit any event, style, or budget.</li>
@@ -43,8 +43,8 @@ const aboutSections = [
   },
   {
     title: "Meet the Team",
-    content: `Behind EventO is a passionate group of event enthusiasts, tech innovators, and customer service professionals. We understand the excitement—and the challenges—of planning memorable events, which is why we’re dedicated to making the process as smooth and enjoyable as possible. Our diverse team brings together years of experience in hospitality, technology, and support, all united by a shared commitment to helping you create unforgettable moments. We’re here to support you every step of the way!`,
-    imageAlt: "EventO team photo",
+        content: `Behind Venuity is a passionate group of event enthusiasts, tech innovators, and customer service professionals. We understand the excitement—and the challenges—of planning memorable events, which is why we’re dedicated to making the process as smooth and enjoyable as possible. Our diverse team brings together years of experience in hospitality, technology, and support, all united by a shared commitment to helping you create unforgettable moments. We’re here to support you every step of the way!`,
+        imageAlt: "Venuity team photo",
     image: null // Add image path or import here
   },
   {
@@ -71,8 +71,8 @@ const About = () => (
     {/* Hero Section */}
     <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
       <div className="container mx-auto px-4 text-center">
-        <EventOLogo />
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">About EventO</h1>
+                <VenuityLogo />
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">About Venuity</h1>
         <p className="text-xl mb-8">Discover what makes us the best choice for your next event.</p>
       </div>
     </section>
@@ -171,7 +171,7 @@ const About = () => (
     <section className="py-16 bg-gradient-to-r from-indigo-600 to-purple-700 text-white">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold mb-6">Ready to Host Your Next Event?</h2>
-        <p className="text-xl mb-8 max-w-2xl mx-auto">Join thousands of satisfied customers who have found their perfect venue through EventO.</p>
+                <p className="text-xl mb-8 max-w-2xl mx-auto">Join thousands of satisfied customers who have found their perfect venue through Venuity.</p>
         <a 
           href="/register" 
           className="inline-block bg-white text-indigo-700 hover:bg-gray-100 py-3 px-8 rounded-md font-semibold transition duration-300 ease-in-out"
