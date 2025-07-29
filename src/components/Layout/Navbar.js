@@ -7,6 +7,7 @@ import { FiMenu, FiX, FiUser, FiLogOut, FiHome, FiCalendar, FiSettings } from 'r
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isAboutMenuOpen, setIsAboutMenuOpen] = useState(false);
   const { user, host, logout } = useAuth();
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,9 +66,27 @@ const Navbar = () => {
               <Link href="/services" className={navLinkClasses('/services')}>
                 Services
               </Link>
-              <Link href="/about" className={navLinkClasses('/about')}>
-                About
-              </Link>
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsAboutMenuOpen(true)}
+                onMouseLeave={() => setIsAboutMenuOpen(false)}
+              >
+                <button className={navLinkClasses('/about')}>
+                  <span>About</span>
+                </button>
+                {isAboutMenuOpen && (
+                  <div className="origin-top-left absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1">
+                      <Link href="/about#overview" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        Overview
+                      </Link>
+                      <Link href="/about#features" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        Features
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
               <Link href="/contact" className={navLinkClasses('/contact')}>
                 Contact
               </Link>
