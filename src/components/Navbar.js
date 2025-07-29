@@ -3,7 +3,7 @@ import Link from 'next/link';
 const Navbar = () => (
   <nav className="flex items-center justify-between px-6 py-4 bg-white shadow">
     <div className="text-2xl font-bold text-blue-700">
-      <Link href="/">EventO</Link>
+            <Link href="/">Venuity</Link>
     </div>
     <div className="flex space-x-6">
       <Link href="/">Home</Link>
