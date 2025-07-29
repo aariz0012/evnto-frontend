@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FiSearch, FiShield, FiMessageCircle, FiStar, FiClipboard, FiHeadphones } from 'react-icons/fi';
 
 // Import the reusable Logo component
-import Logo from '../components/common/Logo';
+import Logo from '@/components/common/Logo';
 
 // Logo component with tagline for the about page
 const VenuityLogo = () => (
