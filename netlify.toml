@@ -11,9 +11,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    enableStaticFiles = true
-    enableFunctions = true
 
 # Redirect all requests to the main entry point
 # This enables client-side routing
