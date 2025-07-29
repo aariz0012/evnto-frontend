@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FiSearch, FiShield, FiMessageCircle, FiStar, FiClipboard, FiHeadphones } from 'react-icons/fi';
 
 // Placeholder SVG logo component
 const EventOLogo = () => (
@@ -104,6 +105,65 @@ const About = () => (
             </div>
           </motion.div>
         ))}
+      </div>
+    </section>
+
+    {/* Features Section */}
+    <section id="features" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Our Core Features</h2>
+          <p className="text-lg text-gray-600 mt-2">Everything you need to plan the perfect event.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              icon: <FiSearch className="w-10 h-10 text-indigo-500" />,
+              title: "Advanced Search & Filtering",
+              description: "Quickly find the perfect venue with powerful search, custom filters, and an interactive map view.",
+            },
+            {
+              icon: <FiShield className="w-10 h-10 text-indigo-500" />,
+              title: "Secure Online Booking",
+              description: "Book your venue with confidence using our secure and streamlined payment and reservation system.",
+            },
+            {
+              icon: <FiMessageCircle className="w-10 h-10 text-indigo-500" />,
+              title: "Direct Communication",
+              description: "Connect directly with venue hosts to ask questions, discuss details, and ensure everything is perfect.",
+            },
+            {
+              icon: <FiStar className="w-10 h-10 text-indigo-500" />,
+              title: "Verified Reviews & Ratings",
+              description: "Make informed decisions by reading authentic reviews and ratings from our community of users.",
+            },
+            {
+              icon: <FiClipboard className="w-10 h-10 text-indigo-500" />,
+              title: "Event Management Tools",
+              description: "Stay organized with a personalized dashboard to manage bookings, track payments, and communicate.",
+            },
+            {
+              icon: <FiHeadphones className="w-10 h-10 text-indigo-500" />,
+              title: "24/7 Customer Support",
+              description: "Our dedicated support team is available around the clock to assist you with any questions or issues.",
+            },
+          ].map((feature, idx) => (
+            <motion.div
+              key={idx}
+              className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-100 mb-4">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
 
