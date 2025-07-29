@@ -75,7 +75,7 @@ const ServicesPage = () => {
   }, []);
 
   return (
-    <Layout title="Services | EventO">
+        <Layout title="Services | Venuity">
       <div className="min-h-screen bg-gray-50">
         {/* Header/Hero Section */}
         <motion.section
