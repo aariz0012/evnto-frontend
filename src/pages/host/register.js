@@ -119,7 +119,7 @@ const HostRegister = () => {
   };
 
   return (
-    <Layout title="Host Registration - EventO">
+        <Layout title="Host Registration - Venuity">
       <div className="bg-gray-50 min-h-screen py-12">
         <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-gradient-to-r from-secondary-600 to-primary-600 py-4 px-6">
