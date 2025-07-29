@@ -48,7 +48,7 @@ const Contact = () => {
       icon: <FaEnvelope className="text-2xl" />,
       title: "Email",
       details: [
-        { text: "support@evento.com", link: "mailto:support@evento.com" },
+                { text: "support@venuity.com", link: "mailto:support@venuity.com" },
         { text: "khanaariz0012@gmail.com", link: "mailto:khanaariz0012@gmail.com" }
       ],
       color: "bg-green-500"
