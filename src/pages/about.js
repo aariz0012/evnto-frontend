@@ -5,9 +5,32 @@ import { FiSearch, FiShield, FiMessageCircle, FiStar, FiClipboard, FiHeadphones 
 // Placeholder SVG logo component
 const VenuityLogo = () => (
   <div className="flex justify-center mb-6">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Venuity Logo">
-      <circle cx="40" cy="40" r="38" stroke="#6366F1" strokeWidth="4" fill="#EEF2FF" />
-      <text x="50%" y="54%" textAnchor="middle" fill="#6366F1" fontSize="32" fontWeight="bold" dy=".3em" fontFamily="Arial, sans-serif">E</text>
+    <svg width="300" height="80" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg" aria-label="Venuity Logo">
+      <style>
+        {
+          `
+          @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap');
+          .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 50px;
+            font-weight: 700;
+          }
+          .tagline-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            fill: #4A5568;
+          }
+          `
+        }
+      </style>
+      <text x="0" y="45" className="logo-text">
+        <tspan fill="#006400">V</tspan>
+        <tspan fill="#000000">enuity</tspan>
+      </text>
+      <text x="0" y="68" className="tagline-text">
+        EVENTS MADE EASY
+      </text>
     </svg>
   </div>
 );
