@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../context/AuthContext';
@@ -9,6 +9,22 @@ const Navbar = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const { user, host, logout } = useAuth();
   const router = useRouter();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -23,65 +39,36 @@ const Navbar = () => {
     setIsProfileOpen(false);
   };
 
+  const navLinkClasses = (path) =>
+    `${router.pathname === path
+      ? 'text-primary-500 border-primary-500'
+      : 'text-gray-500 hover:text-primary-500 border-transparent'
+    } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-300`;
+
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="text-2xl font-bold text-primary-600">
+              <Link href="/" className={`text-2xl font-bold ${isScrolled ? 'text-primary-600' : 'text-white'}`}>
                 EventO
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <Link 
-                href="/" 
-                className={`${
-                  router.pathname === '/' 
-                    ? 'border-primary-500 text-gray-900' 
-                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-              >
+              <Link href="/" className={navLinkClasses('/')}>
                 Home
               </Link>
-              <Link 
-                href="/venues" 
-                className={`${
-                  router.pathname.startsWith('/venues') 
-                    ? 'border-primary-500 text-gray-900' 
-                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-              >
+              <Link href="/venues" className={navLinkClasses('/venues')}>
                 Venues
               </Link>
-              <Link 
-                href="/services" 
-                className={`${
-                  router.pathname.startsWith('/services') 
-                    ? 'border-primary-500 text-gray-900' 
-                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-              >
+              <Link href="/services" className={navLinkClasses('/services')}>
                 Services
               </Link>
-              <Link 
-                href="/about" 
-                className={`${
-                  router.pathname === '/about' 
-                    ? 'border-primary-500 text-gray-900' 
-                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-              >
+              <Link href="/about" className={navLinkClasses('/about')}>
                 About
               </Link>
-              <Link 
-                href="/contact" 
-                className={`${
-                  router.pathname === '/contact' 
-                    ? 'border-primary-500 text-gray-900' 
-                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-              >
+              <Link href="/contact" className={navLinkClasses('/contact')}>
                 Contact
               </Link>
             </div>
@@ -109,7 +96,7 @@ const Navbar = () => {
                       </p>
                     </div>
                     <div className="border-t border-gray-100"></div>
-                    <Link 
+                    <Link
                       href={user ? "/dashboard" : "/host/dashboard"}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsProfileOpen(false)}
@@ -118,7 +105,7 @@ const Navbar = () => {
                         <FiHome className="mr-2" /> Dashboard
                       </div>
                     </Link>
-                    <Link 
+                    <Link
                       href={user ? "/bookings" : "/host/bookings"}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsProfileOpen(false)}
@@ -127,7 +114,7 @@ const Navbar = () => {
                         <FiCalendar className="mr-2" /> {user ? "My Bookings" : "Manage Bookings"}
                       </div>
                     </Link>
-                    <Link 
+                    <Link
                       href={user ? "/profile" : "/host/profile"}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsProfileOpen(false)}
@@ -149,22 +136,22 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <div className="flex items-center space-x-4">
-                <Link 
-                  href="/login" 
-                  className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              <div className="flex items-center space-x-2">
+                <Link
+                  href="/login"
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${isScrolled ? 'text-gray-600 hover:bg-gray-200' : 'text-white hover:bg-white/20'}`}
                 >
                   Log In
                 </Link>
-                <Link 
-                  href="/register" 
-                  className="btn-primary"
+                <Link
+                  href="/register"
+                  className="btn-primary-outline"
                 >
                   Sign Up
                 </Link>
-                <Link 
-                  href="/host/register" 
-                  className="btn-secondary"
+                <Link
+                  href="/host/register"
+                  className="btn-primary"
                 >
                   Become a Host
                 </Link>
@@ -174,7 +161,7 @@ const Navbar = () => {
           <div className="-mr-2 flex items-center sm:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+              className={`inline-flex items-center justify-center p-2 rounded-md transition-colors duration-300 ${isScrolled ? 'text-gray-500 hover:bg-gray-100' : 'text-white hover:bg-white/20'}`}
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -189,56 +176,31 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="sm:hidden">
+        <div className="sm:hidden bg-white/95 backdrop-blur-sm">
           <div className="pt-2 pb-3 space-y-1">
-            <Link 
-              href="/" 
-              className={`${
-                router.pathname === '/' 
-                  ? 'bg-primary-50 border-primary-500 text-primary-700' 
-                  : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
-              } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
-            >
+            <Link
+              href="/"
+              className={`${router.pathname === '/' ? 'bg-primary-50 border-primary-500 text-primary-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}>
               Home
             </Link>
-            <Link 
-              href="/venues" 
-              className={`${
-                router.pathname.startsWith('/venues') 
-                  ? 'bg-primary-50 border-primary-500 text-primary-700' 
-                  : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
-              } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
-            >
+            <Link
+              href="/venues"
+              className={`${router.pathname.startsWith('/venues') ? 'bg-primary-50 border-primary-500 text-primary-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}>
               Venues
             </Link>
-            <Link 
-              href="/services" 
-              className={`${
-                router.pathname.startsWith('/services') 
-                  ? 'bg-primary-50 border-primary-500 text-primary-700' 
-                  : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
-              } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
-            >
+            <Link
+              href="/services"
+              className={`${router.pathname.startsWith('/services') ? 'bg-primary-50 border-primary-500 text-primary-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}>
               Services
             </Link>
-            <Link 
-              href="/about" 
-              className={`${
-                router.pathname === '/about' 
-                  ? 'bg-primary-50 border-primary-500 text-primary-700' 
-                  : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
-              } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
-            >
+            <Link
+              href="/about"
+              className={`${router.pathname === '/about' ? 'bg-primary-50 border-primary-500 text-primary-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}>
               About
             </Link>
-            <Link 
-              href="/contact" 
-              className={`${
-                router.pathname === '/contact' 
-                  ? 'bg-primary-50 border-primary-500 text-primary-700' 
-                  : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
-              } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
-            >
+            <Link
+              href="/contact"
+              className={`${router.pathname === '/contact' ? 'bg-primary-50 border-primary-500 text-primary-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}>
               Contact
             </Link>
           </div>
