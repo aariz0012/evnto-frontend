@@ -23,7 +23,7 @@ const LoadingPage = () => {
           className="mb-6"
         >
           <div className="text-6xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 text-transparent bg-clip-text">
-            EventO
+                        Venuity
           </div>
         </motion.div>
         
