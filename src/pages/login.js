@@ -52,7 +52,7 @@ const Login = () => {
   };
 
   return (
-    <Layout title="Login - EventO">
+        <Layout title="Login - Venuity">
       <div className="bg-gray-50 min-h-screen py-12">
         <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-gradient-to-r from-primary-600 to-secondary-600 py-4 px-6">
