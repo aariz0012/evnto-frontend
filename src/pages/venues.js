@@ -67,7 +67,7 @@ const VenuesPage = () => {
   };
 
   return (
-    <Layout title="Venues | EventO">
+        <Layout title="Venues | Venuity">
       <div className="min-h-screen">
         {/* Hero/Header Section */}
         <motion.section
