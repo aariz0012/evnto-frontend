@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
+import { AuthProvider } from '../context/AuthContext';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.css';
 
@@ -9,6 +10,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
+  // Handle route changes
   useEffect(() => {
     const handleStart = () => setLoading(true);
     const handleComplete = () => setLoading(false);
@@ -25,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   }, [router]);
 
   return (
-    <>
+    <AuthProvider>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </Head>
@@ -51,7 +53,7 @@ function MyApp({ Component, pageProps }) {
         pauseOnHover
         theme="light"
       />
-    </>
+    </AuthProvider>
   );
 }
 
