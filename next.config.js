@@ -17,7 +17,7 @@ const nextConfig = {
   reactStrictMode: false,
   // Add webpack configuration
   webpack: (config, { isServer }) => {
-    if (!isServer) { 
+    if (!isServer) {
       config.resolve.fallback = {
         fs: false,
         net: false,
