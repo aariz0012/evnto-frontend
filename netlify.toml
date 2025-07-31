@@ -9,11 +9,16 @@
   NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
 
-# Required for client-side routing
+# Required for Next.js SSR
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Handle 404s for client-side routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
 
 # Security headers
 [[headers]]
