@@ -1,66 +1,87 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 import axios from 'axios';
-import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import jwt_decode from 'jwt-decode';
 
-const AuthContext = createContext();
+const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [host, setHost] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
   const router = useRouter();
-  
-  // Check if user is logged in on initial load
+
+  // Check if user is authenticated on initial load
   useEffect(() => {
-    checkUserLoggedIn();
+    const checkAuth = async () => {
+      try {
+        const token = Cookies.get('token');
+        if (token) {
+          // Verify token with backend
+          const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          if (data.isHost) {
+            setHost(data.data);
+          } else {
+            setUser(data.data);
+          }
+        }
+      } catch (error) {
+        console.error('Auth check failed:', error);
+        Cookies.remove('token');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAuth();
   }, []);
-  
+
   // Register user
   const registerUser = async (userData) => {
     try {
-      setIsLoading(true);
+      setLoading(true);
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register/user`, userData);
       
       if (res.data.success) {
         setUser(jwt_decode(res.data.token));
-        setCookie('token', res.data.token);
-        setIsLoading(false);
+        Cookies.set('token', res.data.token, { expires: 7 });
+        setLoading(false);
         return res.data;
       }
     } catch (err) {
       setError(err.response?.data?.error || 'Something went wrong');
-      setIsLoading(false);
+      setLoading(false);
       throw err;
     }
   };
-  
+
   // Register host
   const registerHost = async (hostData) => {
     try {
-      setIsLoading(true);
+      setLoading(true);
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register/host`, hostData);
       
       if (res.data.success) {
         setHost(jwt_decode(res.data.token));
-        setCookie('token', res.data.token);
-        setIsLoading(false);
+        Cookies.set('token', res.data.token, { expires: 7 });
+        setLoading(false);
         return res.data;
       }
     } catch (err) {
       setError(err.response?.data?.error || 'Something went wrong');
-      setIsLoading(false);
+      setLoading(false);
       throw err;
     }
   };
-  
+
   // Login user
   const loginUser = async ({ email, password }) => {
     try {
-      setIsLoading(true);
+      setLoading(true);
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login/user`, {
         email,
         password
@@ -68,21 +89,21 @@ export const AuthProvider = ({ children }) => {
       
       if (res.data.success) {
         setUser(jwt_decode(res.data.token));
-        setCookie('token', res.data.token);
-        setIsLoading(false);
+        Cookies.set('token', res.data.token, { expires: 7 });
+        setLoading(false);
         return res.data;
       }
     } catch (err) {
       setError(err.response?.data?.error || 'Invalid credentials');
-      setIsLoading(false);
+      setLoading(false);
       throw err;
     }
   };
-  
+
   // Login host
   const loginHost = async ({ email, password }) => {
     try {
-      setIsLoading(true);
+      setLoading(true);
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login/host`, {
         email,
         password
@@ -90,109 +111,93 @@ export const AuthProvider = ({ children }) => {
       
       if (res.data.success) {
         setHost(jwt_decode(res.data.token));
-        setCookie('token', res.data.token);
-        setIsLoading(false);
+        Cookies.set('token', res.data.token, { expires: 7 });
+        setLoading(false);
         return res.data;
       }
     } catch (err) {
       setError(err.response?.data?.error || 'Invalid credentials');
-      setIsLoading(false);
+      setLoading(false);
       throw err;
     }
   };
-  
+
   // Logout
-  const logout = async () => {
-    try {
-      await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`);
-      setUser(null);
-      setHost(null);
-      deleteCookie('token');
-      router.push('/');
-    } catch (err) {
-      console.error('Logout error:', err);
-    }
+  const logout = () => {
+    setUser(null);
+    setHost(null);
+    Cookies.remove('token');
+    router.push('/');
   };
-  
+
   // Verify OTP
   const verifyOTP = async (data) => {
     try {
-      setIsLoading(true);
+      setLoading(true);
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/verify-otp`, data);
-      setIsLoading(false);
+      setLoading(false);
       return res.data;
     } catch (err) {
       setError(err.response?.data?.error || 'Invalid OTP');
-      setIsLoading(false);
+      setLoading(false);
       throw err;
     }
   };
-  
-  // Check if user is logged in
-  const checkUserLoggedIn = async () => {
-    try {
-      const token = getCookie('token');
-      
-      if (token) {
-        // Set auth token header
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        
-        // Get current user
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`);
-        
-        if (res.data.success) {
-          if (res.data.isHost) {
-            setHost(res.data.data);
-          } else {
-            setUser(res.data.data);
-          }
-        }
-      }
-      
-      setIsLoading(false);
-    } catch (err) {
-      deleteCookie('token');
-      setUser(null);
-      setHost(null);
-      setIsLoading(false);
-      console.error('Check auth error:', err);
-    }
+
+  const value = {
+    isAuthenticated: !!user || !!host,
+    user,
+    host,
+    loading,
+    error,
+    registerUser,
+    registerHost,
+    loginUser,
+    loginHost,
+    logout,
+    verifyOTP
   };
-  
-  return (
-    <AuthContext.Provider
-      value={{
-        user,
-        host,
-        isLoading,
-        error,
-        registerUser,
-        registerHost,
-        loginUser,
-        loginHost,
-        logout,
-        verifyOTP,
-        checkUserLoggedIn
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-export default AuthContext;
-
-// Custom hook to use the auth context
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  
-  if (!context) {
+  if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
-  
-  return {
-    ...context,
-    isAuthenticated: Boolean(context.user || context.host),
-    loading: context.isLoading
+  return context;
+};
+
+// Server-side auth helper
+export const getServerSidePropsWrapper = (getServerSidePropsFunc) => {
+  return async (context) => {
+    const { req, res } = context;
+    const token = req.cookies.token;
+
+    if (!token) {
+      return {
+        props: { user: null, host: null },
+      };
+    }
+
+    try {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (data.isHost) {
+        return {
+          props: { host: data.data },
+        };
+      } else {
+        return {
+          props: { user: data.data },
+        };
+      }
+    } catch (error) {
+      return {
+        props: { user: null, host: null },
+      };
+    }
   };
 };
