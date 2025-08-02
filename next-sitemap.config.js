@@ -1,5 +1,6 @@
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://evento-app.netlify.app',
+  siteUrl: process.env.SITE_URL || 'https://evento-app.netlify.app',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
@@ -9,7 +10,7 @@ module.exports = {
       },
     ],
   },
-  exclude: ['/server-sitemap.xml'],
+  exclude: ['/server-sitemap.xml', '/admin/*'],
   generateIndexSitemap: true,
-  outDir: 'out',
-}
+  outDir: 'public',
+};
