@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
-import { ToastContainer } from 'react-toastify';
 import { AuthProvider } from '../context/AuthContext';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.css';
@@ -10,49 +8,19 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  // Handle route changes
-  useEffect(() => {
-    const handleStart = () => setLoading(true);
-    const handleComplete = () => setLoading(false);
-
-    router.events.on('routeChangeStart', handleStart);
-    router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
-
-    return () => {
-      router.events.off('routeChangeStart', handleStart);
-      router.events.off('routeChangeComplete', handleComplete);
-      router.events.off('routeChangeError', handleComplete);
-    };
-  }, [router]);
+  // Simple test component to check if React is working
+  const TestComponent = () => (
+    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
+      <h1>Test Component</h1>
+      <p>If you can see this, React is working!</p>
+    </div>
+  );
 
   return (
     <AuthProvider>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      </Head>
-      
-      {/* Global Loading Indicator */}
-      {loading && (
-        <div className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-50">
-          <div className="h-full bg-blue-700 animate-pulse"></div>
-        </div>
-      )}
-      
-      <Component {...pageProps} />
-      
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      {/* Temporarily replace with TestComponent */}
+      <TestComponent />
+      {/* <Component {...pageProps} /> */}
     </AuthProvider>
   );
 }
