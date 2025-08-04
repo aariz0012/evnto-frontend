@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['localhost', 'evento-backend-77q2.onrender.com'],
+    domains: ['localhost', 'venuity-backend.onrender.com'],
   },
   webpack: (config, { isServer }) => {
     // Handle Node.js modules in the browser
