@@ -2,16 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiSearch, FiShield, FiMessageCircle, FiStar, FiClipboard, FiHeadphones } from 'react-icons/fi';
 
-// Import the reusable Logo component
-import Logo from '@/components/common/Logo';
-
-// Logo component with tagline for the about page
-const VenuityLogo = () => (
-  <div className="flex justify-center mb-6">
-    <Logo withTagline={true} />
-  </div>
-);
-
 const aboutSections = [
   {
     title: "Welcoming Introduction",
@@ -71,7 +61,6 @@ const About = () => (
     {/* Hero Section */}
     <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
       <div className="container mx-auto px-4 text-center">
-                <VenuityLogo />
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">About Venuity</h1>
         <p className="text-xl mb-8">Discover what makes us the best choice for your next event.</p>
       </div>
