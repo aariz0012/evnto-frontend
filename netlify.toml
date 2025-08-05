@@ -5,7 +5,7 @@
 
 [build.environment]
   NEXT_PUBLIC_API_URL = "https://venuity-backend.onrender.com"
-  NODE_VERSION = "18"
+  NODE_VERSION = "18.20.2"
   NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
 
