@@ -4,7 +4,15 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['localhost', 'venuity-backend.onrender.com'],
+    unoptimized: true, // Required for Netlify deployment
   },
+  // Enable server-side rendering
+  output: 'standalone',
+  // Configure page extensions
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  // Enable source maps in development
+  productionBrowserSourceMaps: true,
+  // Webpack configuration
   webpack: (config, { isServer }) => {
     // Handle Node.js modules in the browser
     if (!isServer) {
@@ -16,23 +24,12 @@ const nextConfig = {
         tls: false,
       };
     }
-
-    // Handle CSS modules
-    config.module.rules.push({
-      test: /\.css$/,
-      use: [
-        'style-loader',
-        'css-loader',
-        'postcss-loader',
-      ],
-    });
-
     return config;
   },
-  // Enable source maps in development
-  productionBrowserSourceMaps: true,
-  // Configure page extensions
-  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  // Environment variables
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+  },
 };
 
 module.exports = nextConfig;
