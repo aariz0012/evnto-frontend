@@ -14,47 +14,20 @@ const nextConfig = {
         path: false,
         net: false,
         tls: false,
-        // Add more Node.js core modules as needed
       };
     }
-    
-    // Add polyfills for Node.js core modules
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      // Add any necessary polyfills here
-    };
-    
-    // Configure webpack to handle .mjs files
+
+    // Handle CSS modules
     config.module.rules.push({
-      test: /\.m?js$/,
-      type: 'javascript/auto',
-      resolve: {
-        fullySpecified: false,
-      },
+      test: /\.css$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'postcss-loader',
+      ],
     });
-    
+
     return config;
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-        ],
-      },
-    ];
   },
   // Enable source maps in development
   productionBrowserSourceMaps: true,
