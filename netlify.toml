@@ -4,23 +4,23 @@
   functions = ".next/functions"
 
 [build.environment]
-  NEXT_PUBLIC_API_URL = "https://venuity-backend.onrender.com"
+  NEXT_PEER_DEPENDENCY_LINKS = "true"
   NODE_VERSION = "18.20.2"
   NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
+  NEXT_PUBLIC_API_URL = "https://venuity-backend.onrender.com"
 
 # Required for Next.js SSR
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Handle 404s for client-side routing
+# Handle client-side routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
 
-# Security headers
+# Required for Next.js image optimization
 [[headers]]
   for = "/*"
   [headers.values]
@@ -28,16 +28,4 @@
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://venuity-backend.onrender.com https://api.stripe.com; frame-src 'self' https://js.stripe.com;"
-
-# Cache static assets for 1 year
-[[headers]]
-  for = "/_next/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Don't cache HTML files
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.stripe.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://venuity-backend.onrender.com https://api.stripe.com; frame-src 'self' https://js.stripe.com;"
