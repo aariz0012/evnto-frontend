@@ -25,7 +25,7 @@ const nextConfig = {
       };
     }
 
-    // Handle CSS modules
+    // Add CSS loaders
     config.module.rules.push({
       test: /\.css$/,
       use: [
@@ -36,15 +36,12 @@ const nextConfig = {
             importLoaders: 1,
             modules: {
               auto: true,
-              localIdentName: dev 
-                ? '[path][name]__[local]--[hash:base64:5]' 
-                : '[hash:base64:5]',
+              localIdentName: dev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:5]',
             },
           },
         },
         'postcss-loader',
       ],
-      include: /node_modules\/react-toastify/,
     });
 
     return config;
