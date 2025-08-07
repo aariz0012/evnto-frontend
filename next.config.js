@@ -13,7 +13,7 @@ const nextConfig = {
   // Enable source maps in development
   productionBrowserSourceMaps: true,
   // Webpack configuration
-  webpack: (config, { isServer, dev }) => {
+  webpack: (config, { isServer }) => {
     // Handle Node.js modules in the browser
     if (!isServer) {
       config.resolve.fallback = {
@@ -24,31 +24,15 @@ const nextConfig = {
         tls: false,
       };
     }
-
-    // Add CSS loaders
-    config.module.rules.push({
-      test: /\.css$/,
-      use: [
-        'style-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1,
-            modules: {
-              auto: true,
-              localIdentName: dev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:5]',
-            },
-          },
-        },
-        'postcss-loader',
-      ],
-    });
-
     return config;
   },
   // Environment variables
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+  },
+  // Enable experimental CSS optimizations
+  experimental: {
+    optimizeCss: true,
   },
 };
 
