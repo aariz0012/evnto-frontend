@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm ci && npm run build"
   publish = ".next"
   functions = ".next/functions"
 
@@ -13,6 +13,10 @@
 # Required for Next.js SSR
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[dev]
+  framework = "next"
+  target = "experimental"
 
 # Handle client-side routing
 [[redirects]]
