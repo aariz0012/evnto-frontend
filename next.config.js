@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ['localhost', 'venuity-backend.onrender.com'],
     unoptimized: true, // Required for Netlify deployment
@@ -30,7 +29,7 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
-  // Enable experimental CSS optimizations
+  // Experimental features
   experimental: {
     optimizeCss: true,
   },
