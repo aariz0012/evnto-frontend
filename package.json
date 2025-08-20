@@ -2,6 +2,10 @@
   "name": "enjoy-booking-frontend",
   "version": "0.1.0",
   "private": true,
+"engines": {
+  "node": ">=16.0.0",
+  "npm": ">=7.0.0"
+},
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,7 +19,7 @@
     "@stripe/stripe-js": "^1.54.0",
     "axios": "^1.4.0",
     "cookies-next": "^4.1.1",
-    "date-fns": "^2.30.0",
+    "date-fns": "^2.30.0", 
     "formik": "^2.2.9",
     "framer-motion": "^10.12.16",
     "js-cookie": "^3.0.5",
