@@ -1,9 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://yourdomain.com',
+  siteUrl: process.env.SITE_URL || 'https://venuity-backend.onrender.com',
   generateRobotsTxt: true,
-  generateIndexSitemap: true,
-  exclude: ['/server-sitemap.xml', '/admin/*'],
   robotsTxtOptions: {
     policies: [
       {
@@ -12,4 +10,7 @@ module.exports = {
       },
     ],
   },
+  exclude: ['/server-sitemap.xml', '/admin/*'],
+  generateIndexSitemap: true,
+  outDir: 'public',
 };
