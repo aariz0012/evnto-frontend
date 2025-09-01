@@ -5,15 +5,14 @@ const nextConfig = {
     domains: ['localhost', 'venuity-backend.onrender.com'],
     unoptimized: true, // Required for Netlify deployment
   },
-  // Enable server-side rendering
+
+  // ✅ Standalone build for Netlify SSR
   output: 'standalone',
-  // Configure page extensions
-  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
-  // Enable source maps in development
+
+  // ✅ App Router uses .js/.ts/.jsx/.tsx automatically (no need for pageExtensions)
   productionBrowserSourceMaps: true,
-  // Webpack configuration
+
   webpack: (config, { isServer }) => {
-    // Handle Node.js modules in the browser
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -25,12 +24,13 @@ const nextConfig = {
     }
     return config;
   },
-  // Environment variables
+
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
-  // Experimental features
+
   experimental: {
+    // ✅ App Router already optimizes CSS, you can keep this if you want
     optimizeCss: true,
   },
 };
