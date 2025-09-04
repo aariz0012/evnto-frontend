@@ -1,7 +1,7 @@
 [build]
   command = "npm install && npm run build"
   publish = ".next"
-  functions = ".next/functions"
+  functions = ".netlify/functions"
 
 [build.environment]
   NEXT_PEER_DEPENDENCY_LINKS = "true"
@@ -14,17 +14,13 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[dev]
-  framework = "next"
-  target = "experimental"
+# Remove the React-style redirect — Next.js plugin handles routes
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
 
-# Handle client-side routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-# Required for Next.js image optimization
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
