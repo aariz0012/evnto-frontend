@@ -1,15 +1,26 @@
 [build]
   command = "npm install && npm run build"
+  publish = ".next"
+  functions = ".netlify/functions"
 
 [build.environment]
+  NEXT_PEER_DEPENDENCY_LINKS = "true"
   NODE_VERSION = "20.16.0"
   NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
   NEXT_PUBLIC_API_URL = "https://venuity-backend.onrender.com"
 
+# Required for Next.js SSR
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# ✅ REMOVE this block (causes blank page)
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+
+# Required for Next.js image optimization & CSP headers
 [[headers]]
   for = "/*"
   [headers.values]
