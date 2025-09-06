@@ -1,31 +1,48 @@
 [build]
-  command = "npm install && npm run build"
+  command = "npm run build"
   publish = ".next"
-  functions = ".netlify/functions"
 
 [build.environment]
-  NEXT_PEER_DEPENDENCY_LINKS = "true"
-  NODE_VERSION = "20.16.0"
-  NPM_FLAGS = "--legacy-peer-deps"
-  NEXT_TELEMETRY_DISABLED = "1"
-  NEXT_PUBLIC_API_URL = "https://venuity-backend.onrender.com"
+  NODE_VERSION = "18"
 
-# Required for Next.js SSR
+# Copy static assets from public to the build output
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# ✅ REMOVE this block (causes blank page)
-# [[redirects]]
-#   from = "/*"
-#   to = "/index.html"
-#   status = 200
-
-# Required for Next.js image optimization & CSP headers
+# Headers for favicon files
 [[headers]]
-  for = "/*"
+  for = "/favicon_io/*"
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://venuity-backend.onrender.com https://api.stripe.com; frame-src 'self' https://js.stripe.com;"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects to ensure favicon files are accessible
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon_io/favicon-32x32.png"
+  status = 200
+
+[[redirects]]
+  from = "/android-chrome-192x192.png"
+  to = "/favicon_io/android-chrome-192x192.png"
+  status = 200
+
+[[redirects]]
+  from = "/android-chrome-512x512.png"
+  to = "/favicon_io/android-chrome-512x512.png"
+  status = 200
+
+# Copy public files to the root
+[[redirects]]
+  from = "/favicon_io/*"
+  to = "/favicon_io/:splat"
+  status = 200
