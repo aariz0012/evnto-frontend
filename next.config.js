@@ -6,8 +6,11 @@ const nextConfig = {
     unoptimized: true, // Required for Netlify deployment
   },
 
-  // ✅ Standalone build for Netlify SSR
+  // ✅ Dynamic site with proper static asset handling
   output: 'standalone',
+  
+  // Ensure static assets are properly handled
+  assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
 
   // ✅ App Router uses .js/.ts/.jsx/.tsx automatically (no need for pageExtensions)
   productionBrowserSourceMaps: true,
