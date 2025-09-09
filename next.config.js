@@ -6,8 +6,8 @@ const nextConfig = {
     unoptimized: true, // Required for Netlify deployment
   },
 
-  // ✅ Dynamic site with proper static asset handling
-  output: 'standalone',
+  // ✅ Let Netlify's Next.js plugin handle SSR/ISR (no standalone server)
+  // output: 'standalone',
   
   // Ensure static assets are properly handled
   assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
