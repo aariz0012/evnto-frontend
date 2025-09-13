@@ -6,6 +6,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { FaMapMarkerAlt, FaStar, FaRegCalendarAlt, FaSearch } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
+export async function getServerSideProps() {
+  return { props: {} };
+}
+
 const VenuesPage = () => {
   const [venues, setVenues] = useState([]);
   const [loading, setLoading] = useState(true);
