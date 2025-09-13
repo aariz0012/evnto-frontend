@@ -2,6 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiSearch, FiShield, FiMessageCircle, FiStar, FiClipboard, FiHeadphones } from 'react-icons/fi';
 
+export async function getServerSideProps() {
+  return { props: {} };
+}
+
 const aboutSections = [
   {
     title: "Welcoming Introduction",
