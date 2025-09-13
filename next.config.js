@@ -6,11 +6,12 @@ const nextConfig = {
     unoptimized: true, // Required for Netlify deployment
   },
 
-  // ✅ Let Netlify's Next.js plugin handle SSR/ISR (no standalone server)
-  // output: 'standalone',
+  // ✅ Force dynamic rendering for all pages
+  trailingSlash: false,
+  generateEtags: false,
   
   // Ensure static assets are properly handled
-  assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',     
 
   // ✅ App Router uses .js/.ts/.jsx/.tsx automatically (no need for pageExtensions)
   productionBrowserSourceMaps: true,
