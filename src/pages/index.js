@@ -5,6 +5,13 @@ import { FiSearch, FiMapPin, FiUsers, FiCalendar, FiArrowRight } from 'react-ico
 import Layout from '../components/Layout/Layout';
 
 
+export async function getServerSideProps() {
+  // Force dynamic rendering
+  return {
+    props: {},
+  };
+}
+
 export default function Home() {
   const [searchParams, setSearchParams] = useState({
     location: '',
