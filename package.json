@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/copy-assets.js && next-sitemap",
-    "start": "next start",
+    "postbuild": "node scripts/copy-assets.js",
+       "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
