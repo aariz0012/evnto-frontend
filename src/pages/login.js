@@ -8,6 +8,10 @@ import { FiMail, FiLock, FiUser, FiHome } from 'react-icons/fi';
 import { useAuth } from '../context/AuthContext';
 import Layout from '../components/Layout/Layout';
 
+export async function getServerSideProps() {
+  return { props: {} };
+}
+
 const Login = () => {
   const [userType, setUserType] = useState('user'); // 'user' or 'host'
   const { loginUser, loginHost } = useAuth();
