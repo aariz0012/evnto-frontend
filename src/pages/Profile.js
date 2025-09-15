@@ -7,9 +7,7 @@ import { toast } from 'react-toastify';
 import { FaCalendarAlt, FaMapMarkerAlt, FaUser, FaEnvelope, FaPhone, FaEdit, FaTrash, FaStar } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-export async function getServerSideProps() {
-  return { props: {} };
-}
+// Static export - no server-side rendering needed
 
 const Profile = () => {
   const { user, isAuthenticated, logout, updateUserProfile } = useAuth();
