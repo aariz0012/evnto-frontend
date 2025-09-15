@@ -4,9 +4,7 @@ import { FiMapPin, FiChevronRight, FiUsers, FiStar, FiSearch } from 'react-icons
 import { FaUtensils, FaPaintBrush, FaRegCalendarCheck } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-export async function getServerSideProps() {
-  return { props: {} };
-}
+// Static export - no server-side rendering needed
 
 const serviceCategories = [
   {
