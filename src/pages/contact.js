@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaDirections } from "react-icons/fa";
 
-export async function getServerSideProps() {
-  return { props: {} };
-}
+// Static export - no server-side rendering needed
 
 const Contact = () => {
   const [formData, setFormData] = useState({
