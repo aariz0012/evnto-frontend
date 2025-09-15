@@ -5,6 +5,10 @@ import { format } from 'date-fns';
 import { FaMapMarkerAlt, FaStar, FaRegCalendarAlt, FaSearch } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
+export async function getServerSideProps() {
+  return { props: {} };
+}
+
 const Home = () => {
   const [venues, setVenues] = useState([]);
   const [featuredVenues, setFeaturedVenues] = useState([]);
