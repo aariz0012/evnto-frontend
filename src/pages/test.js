@@ -1,6 +1,8 @@
 // Simple test page to verify basic Next.js functionality
 import { useEffect } from 'react';
 
+// Static export - no server-side rendering needed
+
 export default function TestPage() {
   // Log when component mounts
   useEffect(() => {
@@ -72,7 +74,4 @@ export default function TestPage() {
   );
 }
 
-// Disable server-side rendering for this page
-export const getServerSideProps = () => ({
-  props: {},
-});
+// This page is client-side only for testing purposes
