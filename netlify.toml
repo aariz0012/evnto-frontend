@@ -1,13 +1,9 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "18"
-
-# Copy static assets from public to the build output
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
 
 # Headers for favicon files
 [[headers]]
