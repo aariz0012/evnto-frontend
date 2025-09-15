@@ -3,9 +3,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaHome, FaSearch } from 'react-icons/fa';
 
-export async function getServerSideProps() {
-  return { props: {} };
-}
+// Static export - no server-side rendering needed
 
 const NotFound = () => {
   return (
