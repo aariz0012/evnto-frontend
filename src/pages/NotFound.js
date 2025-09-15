@@ -3,6 +3,10 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaHome, FaSearch } from 'react-icons/fa';
 
+export async function getServerSideProps() {
+  return { props: {} };
+}
+
 const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
