@@ -6,9 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { FaMapMarkerAlt, FaStar, FaRegCalendarAlt, FaSearch } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-export async function getServerSideProps() {
-  return { props: {} };
-}
+// Static export - no server-side rendering needed
 
 const VenuesPage = () => {
   const [venues, setVenues] = useState([]);
@@ -17,7 +15,7 @@ const VenuesPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [dateRange, setDateRange] = useState({
     startDate: new Date(),
-    endDate: new Date(new Date().setDate(new Date().getDate() + 1)),
+    endDate: new Date(new Date().setDate(new Date().getDate() + 1)), 
   });
 
   useEffect(() => {
