@@ -9,6 +9,10 @@ import { useAuth } from '../context/AuthContext';
 import Layout from '../components/Layout/Layout';
 import OTPVerification from '../components/auth/OTPVerification';
 
+export async function getServerSideProps() {
+  return { props: {} };
+}
+
 const Register = () => {
   const [showOTPForm, setShowOTPForm] = useState(false);
   const [registeredEmail, setRegisteredEmail] = useState('');
