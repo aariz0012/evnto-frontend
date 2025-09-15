@@ -3,18 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['localhost', 'venuity-backend.onrender.com'],
-    unoptimized: true, // Required for Netlify deployment
+    // Remove unoptimized since we're not doing static export anymore
   },
-
-  // ✅ Static export for reliable Netlify deployment
-  output: 'export',
+  // Remove static export related settings
   trailingSlash: false,
-  generateEtags: false,
-  
-  // Ensure static assets are properly handled
-  assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',     
-
-  // ✅ App Router uses .js/.ts/.jsx/.tsx automatically (no need for pageExtensions)
+  generateEtags: true,
   productionBrowserSourceMaps: true,
 
   // Security headers
@@ -39,10 +32,6 @@ const nextConfig = {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
           },
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
         ],
       },
     ];
@@ -50,10 +39,10 @@ const nextConfig = {
 
   webpack: (config, { isServer }) => {
     if (!isServer) {
+      // Don't include certain modules in the client bundle
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
-        path: false,
         net: false,
         tls: false,
       };
@@ -63,11 +52,6 @@ const nextConfig = {
 
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
-  },
-
-  experimental: {
-    // ✅ App Router already optimizes CSS, you can keep this if you want
-    optimizeCss: true,
   },
 };
 
