@@ -8,6 +8,10 @@ import { toast } from 'react-toastify';
 import { FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaCreditCard, FaLock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { loadStripe } from '@stripe/stripe-js';
+ 
+export async function getServerSideProps() {
+  return { props: {} };
+}
 import { CardElement, Elements, useStripe, useElements } from '@stripe/react-stripe-js';
 
 // Initialize Stripe
