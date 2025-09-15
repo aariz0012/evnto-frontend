@@ -5,16 +5,14 @@ import { format } from 'date-fns';
 import { FaMapMarkerAlt, FaStar, FaRegCalendarAlt, FaSearch } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-export async function getServerSideProps() {
-  return { props: {} };
-}
+// Static export - no server-side rendering needed
 
 const Home = () => {
   const [venues, setVenues] = useState([]);
   const [featuredVenues, setFeaturedVenues] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');  
   const [dateRange, setDateRange] = useState({
     startDate: new Date(),
     endDate: new Date(new Date().setDate(new Date().getDate() + 1))
