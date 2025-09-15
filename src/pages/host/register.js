@@ -9,6 +9,8 @@ import { useAuth } from '../../context/AuthContext';
 import Layout from '../../components/Layout/Layout';
 import OTPVerification from '../../components/auth/OTPVerification';
 
+// Static export - no server-side rendering needed
+
 const HostRegister = () => {
   const [showOTPForm, setShowOTPForm] = useState(false);
   const [registeredEmail, setRegisteredEmail] = useState('');
