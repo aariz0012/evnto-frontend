@@ -6,7 +6,8 @@ const nextConfig = {
     unoptimized: true, // Required for Netlify deployment
   },
 
-  // ✅ Force dynamic rendering for all pages
+  // ✅ Static export for reliable Netlify deployment
+  output: 'export',
   trailingSlash: false,
   generateEtags: false,
   
