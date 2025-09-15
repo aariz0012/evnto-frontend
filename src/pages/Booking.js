@@ -9,9 +9,7 @@ import { FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaCreditCard, FaLock } from 're
 import { motion } from 'framer-motion';
 import { loadStripe } from '@stripe/stripe-js';
  
-export async function getServerSideProps() {
-  return { props: {} };
-}
+// Static export - no server-side rendering needed
 import { CardElement, Elements, useStripe, useElements } from '@stripe/react-stripe-js';
 
 // Initialize Stripe
