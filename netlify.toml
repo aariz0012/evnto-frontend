@@ -1,9 +1,11 @@
 [build]
   command = "npm run build"
-  publish = "out"
+  publish = ".next"
+  functions = ".next/functions"
 
 [build.environment]
   NODE_VERSION = "18"
+  NODE_ENV = "production"
 
 # Headers for favicon files
 [[headers]]
@@ -32,13 +34,14 @@
   to = "/favicon_io/android-chrome-192x192.png"
   status = 200
 
+# Handle all other routes with Next.js
 [[redirects]]
-  from = "/android-chrome-512x512.png"
-  to = "/favicon_io/android-chrome-512x512.png"
+  from = "/*"
+  to = "/index.html"
   status = 200
 
-# Copy public files to the root
-[[redirects]]
-  from = "/favicon_io/*"
-  to = "/favicon_io/:splat"
-  status = 200
+# Enable server-side rendering
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    functions_src = ".next/functions"
