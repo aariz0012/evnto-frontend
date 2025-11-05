@@ -3,14 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['localhost', 'venuity-backend.onrender.com'],
-    // Remove unoptimized since we're not doing static export anymore
   },
-  // Remove static export related settings
   trailingSlash: false,
   generateEtags: true,
   productionBrowserSourceMaps: true,
-
-  // Security headers
   async headers() {
     return [
       {
@@ -36,20 +32,15 @@ const nextConfig = {
       },
     ];
   },
-
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // Don't include certain modules in the client bundle
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    };
     return config;
   },
-
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
