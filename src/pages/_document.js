@@ -5,29 +5,24 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta charSet="utf-8" />
-        <meta
-          name="description"
-          content="Venuity - Book your favorite venues and experiences"
-        />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
+        <meta name="description" content="Venuity - Book your favorite venues and experiences" />
         <meta name="theme-color" content="#ffffff" />
-
-        {/* ✅ Security Headers */}
+        <link rel="icon" href="/favicon.ico" />
+        
+        {/* Security Headers */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta httpEquiv="X-Frame-Options" content="DENY" />
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
-        <meta
-          httpEquiv="Referrer-Policy"
-          content="strict-origin-when-cross-origin"
-        />
-
-        {/* ✅ Polyfills for older browsers */}
+        <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://polyfill.io" />
+        
+        {/* Polyfill */}
         <script
-          src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022%2Cfetch%2CIntersectionObserver%2CResizeObserver%2CWebAnimations"
+          src="https://polyfill.io/v3/polyfill.min.js"
           crossOrigin="anonymous"
+          strategy="beforeInteractive"
         />
 
         {/* ✅ Favicon + PWA Icons (match your /public/favicon_io folder) */}
