@@ -125,24 +125,6 @@ const Navbar = () => {
                         <FiHome className="mr-2" /> Dashboard
                       </div>
                     </Link>
-                    <Link
-                      href={user ? "/bookings" : "/host/bookings"}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => setIsProfileOpen(false)}
-                    >
-                      <div className="flex items-center">
-                        <FiCalendar className="mr-2" /> {user ? "My Bookings" : "Manage Bookings"}
-                      </div>
-                    </Link>
-                    <Link
-                      href={user ? "/profile" : "/host/profile"}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => setIsProfileOpen(false)}
-                    >
-                      <div className="flex items-center">
-                        <FiSettings className="mr-2" /> Settings
-                      </div>
-                    </Link>
                     <div className="border-t border-gray-100"></div>
                     <button
                       onClick={handleLogout}
